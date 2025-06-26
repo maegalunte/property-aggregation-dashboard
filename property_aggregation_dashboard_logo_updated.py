@@ -10,7 +10,7 @@ from io import BytesIO
 df = pd.read_excel("Book_with_Coordinates.xlsx")
 
 # Clean and prep data
-df = df.dropna(subset=["Cust City", "Cust Zip", "Parent Company", "Policy Type LOB", "CovA | Auto Liability", "Latitude", "Longitude"])
+df = df.dropna(subset=["Cust City", "Cust Zip", "Parent Company", "Policy Type LOB", "Dwelling Limit", "Latitude", "Longitude"])
 df["CovA"] = pd.to_numeric(df["CovA | Auto Liability"], errors="coerce")
 df["Cust Zip"] = df["Cust Zip"].astype(str).str[:5]
 
