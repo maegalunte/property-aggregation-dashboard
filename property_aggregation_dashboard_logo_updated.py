@@ -11,7 +11,7 @@ df = pd.read_excel("Book_with_Coordinates.xlsx")
 
 # Clean and prep data
 df = df.dropna(subset=["Cust City", "Cust Zip", "Parent Company", "Policy Type LOB", "Dwelling Limit", "Latitude", "Longitude"])
-df["CovA"] = pd.to_numeric(df["CovA | Auto Liability"], errors="coerce")
+df["CovA"] = pd.to_numeric(df["Dwelling Limit"], errors="coerce")
 df["Cust Zip"] = df["Cust Zip"].astype(str).str[:5]
 
 # Sidebar filters
@@ -79,3 +79,4 @@ st_data = st_folium(m, width=700, height=500)
 st.subheader("⬇️ Export Filtered Data")
 csv = filtered_df.to_csv(index=False).encode("utf-8")
 st.download_button("Download Filtered Data as CSV", data=csv, file_name="Filtered_Book_of_Business.csv", mime="text/csv")
+Fix column reference from CovA | Auto Liability to Dwelling Limit
